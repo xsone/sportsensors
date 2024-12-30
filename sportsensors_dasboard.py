@@ -2,15 +2,22 @@ import dash
 from dash import dcc, html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
+#import mysql.connector
 import pandas as pd
 import plotly.express as px
+from pygments.lexers import go
 import datetime
 import os
+# import matplotlib.pyplot as plt
+# import csv
+
+#Query om verschil kolom aan te brengen
+#UPDATE energiemeter JOIN (SELECT id, waterLtr - LAG(waterLtr, 1) OVER (ORDER BY id) AS waterACTgebruik FROM energiemeter) AS subquery ON energiemeter.id = subquery.id SET energiemeter.waterACTgebruik = subquery.waterACTgebruik
 
 # Initialize the Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-#Initial data setup
+#Initial data
 vandaag = datetime.datetime.now()
 gisteren = vandaag - datetime.timedelta(days=1)
 morgen = vandaag + datetime.timedelta(days=1)
@@ -18,7 +25,8 @@ print('Gisteren: ', gisteren)
 print('Vandaag: ', vandaag)
 print('Morgen: ', morgen)
 
-start_date = "20241207"
+#start_date = "20241207"
+start_date = vandaag.strftime("%Y%m%d")
 #end_date = "20241207"
 end_date = start_date
 
