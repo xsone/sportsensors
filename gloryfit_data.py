@@ -1,4 +1,4 @@
-# Functie om specifieke data uit een tekstbestand te halen
+# Functie om specifieke data uit een tekstbestand van het Gloryfit sporthorloge te halen
 import json
 import re
 import matplotlib.pyplot as plt
@@ -14,6 +14,7 @@ output_file = r"D:\Sportdata\GloryFit\20230917_filtered.txt"
 json_data = []
 datum_data = []
 hartslag_data = []
+stappen_data = []
 
 def filter_data(input_file, output_file, text_fragement):
     with open(input_file, 'r', encoding='utf-8') as file:
@@ -33,6 +34,7 @@ def filter_data(input_file, output_file, text_fragement):
                      print(f"Datum: {datum}, Hartslag: {hartslag}, Stappen: {stappen}")
                      datum_data.append(datum)
                      hartslag_data.append(hartslag)
+                     stappen_data.append(stappen)
                  else:
                      print("Geen JSON data gevonden in de string.")
 
